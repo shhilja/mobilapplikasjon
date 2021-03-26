@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+</head>
+
+<body>
+
+    <!-- MENY -->
+    <ons-navigator id="myNavigator">
+        <ons-page>
+            <ons-tabbar id="tabMeny">
+                <ons-tab page="profil.html" label="Profil" icon="fa-user" active>
+                </ons-tab>
+                <ons-tab page="meldinger.html" label="Meldinger" icon="fa-envelope">
+                </ons-tab>
+                <ons-tab page="brukere.html" label="Brukere i nærheten" icon="fa-map-marker-alt">
+                </ons-tab>
+                <ons-tab page="aktiviteter.html" label="Aktiviteter" icon="fa-calendar-alt">
+                </ons-tab>
+                <ons-tab page="instillinger.html" label="Instillinger" icon="md-settings">
+                </ons-tab>
+            </ons-tabbar>
+        </ons-page>
+    </ons-navigator>
+
+    <!-- PROFIL -->
+    <template id="profil.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Profil</div>
+                <div class="right">
+                    <ons-toolbar-button onclick="redigerProfilPush()">Rediger</ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <div id="profilTop">
+
+
+
+                <p class="w3-center"><img src="https://picsum.photos/id/1083/106/106" class="w3-circle profilBilde"
+                        alt="Avatar">
+                    <h4 class="w3-center">HovedBrukerNavn</h4>
+            </div>
+
+         
+            <div>
+                <ons-card>
+
+                    <h5>Bilder</h5>
+                    <div id="gallery">
+                        <div id="largePreview"> <img src="http://placehold.it/200x100" /></div>
+                        <div class="smallPreview">
+                            <div><img src="http://placehold.it/140x48" /></div>
+                            <div><img src="http://placehold.it/140x48" /></div>
+
+                        </div>
+                    </div>
+
+
+                </ons-card>
+            </div>
+
+            <div>
+                <ons-card>
+                    <h5>Introduksjonstekst</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br><br>
+                        Morbi semper sem vitae posuere posuere. Mauris ultricies vehicula orci, et venenatis tellus
+                        finibus eu.<br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </ons-card>
+            </div>
+        </ons-page>
+    </template>
+
+    <template id="redigerProfil.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Tilbake</ons-back-button>
+                </div>
+                <div class="center">Rediger Profil</div>
+                <div class="right">
+                    <ons-toolbar-button>Lagre</ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+
+            <div id="rediger-container">
+
+                <div class="rediger-profil-bilde">
+                    <div class="rediger-profilbilde-tittel">Profilbilde</div>
+
+                    <div class="right-rediger-knapp">
+                        <ons-button modifier="quiet">Rediger</ons-button>
+                    </div>
+                    <div class="eksiterende-bilde w3-center">
+                        <img src="https://picsum.photos/id/1083/106/106" class="w3-circle profilBilde" alt="Avatar">
+                    </div>
+                </div>
+                <hr class="solid">
+
+                <div class="opplysninger-container">
+                    <div class="rediger-tittel">Opplysninger</div>
+                    <ons-list class="opplysninger-liste" modifier="noborder">
+                        <ons-list-item class="input-items">
+                            <div class="left">
+                                Bosted:
+                            </div>
+                            <label class="center">
+                                <ons-input id="sted-input" float maxlength="20" placeholder="Oslo"></ons-input>
+                            </label>
+                        </ons-list-item>
+
+                        <ons-list-item class="input-items">
+                            <div class="left">
+                                Permisjonstid:
+                            </div>
+                            <label class="center">
+                                <ons-input id="permisjon-input" float maxlength="20" placeholder="07.06 - 07.12">
+                                </ons-input>
+                            </label>
+                        </ons-list-item>
+
+                        <ons-list-item class="input-items">
+                            <div class="left">
+                                Barnets alder:
+                            </div>
+                            <label class="center">
+                                <ons-input id="alder-input" float type="number" min="0" max="24" placeholder="3">
+                                </ons-input>
+                            </label>
+                        </ons-list-item>
+                    </ons-list>
+                </div>
+
+                <hr class="solid">
+
+                <div class="introduksjonstekst-container">
+                    <div class="rediger-tittel">Introduksjonstekst</div>
+                    <textarea class="textarea"
+                        rows="10">Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.</textarea>
+
+                </div>
+
+            </div>
+
+
+
+        </ons-page>
+
+    </template>
+
+
+    <!-- MELDINGER -->
+    <template id="meldinger.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Meldinger</div>
+            </ons-toolbar>
+            <ul class="list list--material">
+                <li onclick="customPush()" class="list-item list-item--material">
+                    <div class="list-item__left list-item--material__left">
+                        <img class="list-item__thumbnail list-item--material__thumbnail"
+                            src="https://picsum.photos/id/1011/41/42" alt="">
+                    </div>
+
+                    <div class="list-item__center list-item--material__center">
+                        <div class="list-item__title list-item--material__title">Lily</div>
+                        <div class="list-item__subtitle list-item--material__subtitle">Lorem ipsum dolor sit amet,
+                            consectetut<br>Etiam vulputate rhoncus pellentesque. Cras</div>
+                    </div>
+                </li>
+
+                <li onclick="customPush()" class="list-item list-item--material">
+                    <div class="list-item__left list-item--material__left">
+                        <img class="list-item__thumbnail list-item--material__thumbnail"
+                            src="https://picsum.photos/id/1005/41/42" alt="">
+                    </div>
+
+                    <div class="list-item__center list-item--material__center">
+                        <div class="list-item__title list-item--material__title">Molly</div>
+                        <div class="list-item__subtitle list-item--material__subtitle">quis neque fringilla egestas a
+                            i!<br>quis neque fringilla egestas a i</div>
+                    </div>
+                </li>
+
+                <li onclick="customPush()" class="list-item list-item--material">
+                    <div class="list-item__left list-item--material__left">
+                        <img class="list-item__thumbnail list-item--material__thumbnail"
+                            src="https://picsum.photos/id/1027/41/42" alt="">
+                    </div>
+
+                    <div class="list-item__center list-item--material__center">
+                        <div class="list-item__title list-item--material__title">Per</div>
+                        <div class="list-item__subtitle list-item--material__subtitle"> Cras in justo pretium, cursus
+                            odio gravida,</div>
+                    </div>
+                </li>
+
+                <li onclick="customPush()" class="list-item list-item--material">
+                    <div class="list-item__left list-item--material__left">
+                        <img class="list-item__thumbnail list-item--material__thumbnail"
+                            src="https://picsum.photos/id/1083/41/42" alt="">
+                    </div>
+
+                    <div class="list-item__center list-item--material__center">
+                        <div class="list-item__title list-item--material__title">Ingrid</div>
+                        <div class="list-item__subtitle list-item--material__subtitle"> Cras in justo pretium, cursus
+                            odio gravida,</div>
+                    </div>
+                </li>
+
+                <li onclick="customPush()" class="list-item list-item--material">
+                    <div class="list-item__left list-item--material__left">
+                        <img class="list-item__thumbnail list-item--material__thumbnail"
+                            src="https://picsum.photos/id/129/41/42" alt="">
+                    </div>
+
+                    <div class="list-item__center list-item--material__center">
+                        <div class="list-item__title list-item--material__title">Ole</div>
+                        <div class="list-item__subtitle list-item--material__subtitle"> cursus odio gravida:) </div>
+                    </div>
+                </li>
+
+                <li onclick="customPush()" class="list-item list-item--material">
+                    <div class="list-item__left list-item--material__left">
+                        <img class="list-item__thumbnail list-item--material__thumbnail"
+                            src="https://picsum.photos/id/177/41/42" alt="">
+                    </div>
+
+                    <div class="list-item__center list-item--material__center">
+                        <div class="list-item__title list-item--material__title">Tina</div>
+                        <div class="list-item__subtitle list-item--material__subtitle"> Cras in justo pretium, cursus
+                            odio gravida,<br> Cras in justo pretium, cursus odio gravida,</div>
+                    </div>
+                </li>
+
+            </ul>
+        </ons-page>
+    </template>
+
+    <!--Meldingstråd-->
+    <template id="meldingstrad.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Tilbake</ons-back-button>
+                </div>
+                <div class="center">BrukerNavn</div>
+            </ons-toolbar>
+            <section class="msg-main">
+                <div class="msgr-chat">
+                    <div class="msg left-msg">
+                        <div class="msg-img">
+                            <img class="list-item__thumbnail list-item--material__thumbnail"
+                                src="https://picsum.photos/id/1011/41/42" alt="">
+                        </div>
+
+                        <div class="msg-bubble">
+                            <div class="msg-info">
+                                <div class="msg-info-navn">BrukerNavn</div>
+                                <div class="msg-info-tid">13:05</div>
+                            </div>
+
+                            <div class="msg-tekst">Lorem ipsum dolor sit amet consectetur adipisicing elit..</div>
+
+                        </div>
+                    </div>
+
+                    <div class="msg right-msg">
+                        <div class="msg-img">
+                            <img class="list-item__thumbnail list-item--material__thumbnail"
+                                src="https://picsum.photos/id/1083/106/106" alt="">
+                        </div>
+
+                        <div class="msg-bubble">
+                            <div class="msg-info">
+                                <div class="msg-info-navn">BrukerNavn</div>
+                                <div class="msg-info-tid">13:10</div>
+                            </div>
+
+                            <div class="msg-tekst">Lorem ipsum dolor sit amet consectetur adipisicing elit..</div>
+
+                        </div>
+                    </div>
+
+                    <div class="msg right-msg">
+                        <div class="msg-img">
+                            <img class="list-item__thumbnail list-item--material__thumbnail"
+                                src="https://picsum.photos/id/1083/106/106" alt="">
+                        </div>
+
+                        <div class="msg-bubble">
+                            <div class="msg-info">
+                                <div class="msg-info-navn">BrukerNavn</div>
+                                <div class="msg-info-tid">13:10</div>
+                            </div>
+
+                            <div class="msg-tekst">Lorem ipsum dolor sit amet consectetur adipisicing elit.. Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit. Mollitia repellendus odit doloribus
+                                inventore in? Voluptatibus natus deserunt velit molestiae error. </div>
+
+                        </div>
+                    </div>
+
+                    <div class="msg left-msg">
+                        <div class="msg-img">
+                            <img class="list-item__thumbnail list-item--material__thumbnail"
+                                src="https://picsum.photos/id/1011/41/42" alt="">
+                        </div>
+
+                        <div class="msg-bubble">
+                            <div class="msg-info">
+                                <div class="msg-info-navn">BrukerNavn</div>
+                                <div class="msg-info-tid">13:05</div>
+                            </div>
+
+                            <div class="msg-tekst">Lorem ipsum dolor sit amet consectetur adipisicing elit..</div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <form class="msger-inputarea">
+                    <input type="text" class="msger-input" placeholder="Skriv en melding...">
+                    <button type="button" class="msger-send-btn">Send</button>
+                </form>
+            </section>
+        </ons-page>
+    </template>
+
+    <!-- BRUKERE I NÆRHETEN -->
+    <template id="brukere.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Brukere i nærheten</div>
+            </ons-toolbar>
+            <div id="google-kart">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22633.51011693501!2d10.732446465047232!3d59.9066088715954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61f267f039%3A0x7e92605fd3231e9a!2sOslo!5e0!3m2!1sno!2sno!4v1577991918683!5m2!1sno!2sno"
+                    width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+
+            <ons-carousel swipeable auto-scroll overscrollable auto-refresh item-width="320px">
+                <ons-carousel-item modifier="nodivider" class="karusell-bruker-container">
+                    <div class="karusell-bruker kbruker-1">
+                        <div>
+                            <img class="karusell-bruker-bilde" src="https://picsum.photos/id/1011/120/120" alt="">
+                        </div>
+                        <div class="karusell-avstand list-item__label">250m</div>
+                        <div class="karusell-bruker-info">
+                            <div class="list-item__title"><b>Bruker 1</b></div>
+                            <div class="list-item__subtitle">Lorem ipsum, dolor sit amet consectetur.</div>
+                            <div class="left">
+                                <ons-icon icon="fa-envelope" class="list-item__icon ikoner meldingIkon"></ons-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="karusell-bruker kbruker-2">
+                        <div>
+                            <img class="karusell-bruker-bilde" src="https://picsum.photos/id/1005/120/120" alt="">
+                        </div>
+                        <div class="karusell-avstand list-item__label">250m</div>
+                        <div class="karusell-bruker-info">
+                            <div class="list-item__title"><b>Bruker 2</b></div>
+                            <div class="list-item__subtitle">Lorem ipsum, dolor sit amet consectetur.</div>
+                            <div class="left">
+                                <ons-icon icon="fa-envelope" class="list-item__icon ikoner meldingIkon"></ons-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                </ons-carousel-item>
+
+                <ons-carousel-item modifier="nodivider" class="karusell-bruker-container">
+
+                    <div class="karusell-bruker kbruker-3">
+                        <div>
+                            <img class="karusell-bruker-bilde" src="https://picsum.photos/id/1027/120/120" alt="">
+                        </div>
+                        <div class="karusell-avstand list-item__label">250m</div>
+                        <div class="karusell-bruker-info">
+                            <div class="list-item__title"><b>Bruker 3</b></div>
+                            <div class="list-item__subtitle">Lorem ipsum, dolor sit amet consectetur.</div>
+                            <div class="left">
+                                <ons-icon icon="fa-envelope" class="list-item__icon ikoner meldingIkon"></ons-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="karusell-bruker kbruker-4">
+                        <div>
+                            <img class="karusell-bruker-bilde" src="https://picsum.photos/id/1083/120/120" alt="">
+                        </div>
+                        <div class="karusell-avstand list-item__label">250m</div>
+                        <div class="karusell-bruker-info">
+                            <div class="list-item__title"><b>Bruker 4</b></div>
+                            <div class="list-item__subtitle">Lorem ipsum, dolor sit amet consectetur.</div>
+                            <div class="left">
+                                <ons-icon icon="fa-envelope" class="list-item__icon ikoner meldingIkon"></ons-icon>
+                            </div>
+                        </div>
+                    </div>
+                </ons-carousel-item>
+
+                <ons-carousel-item modifier="nodivider" class="karusell-bruker-container">
+                    <div class="karusell-bruker kbruker-5">
+                        <div>
+                            <img class="karusell-bruker-bilde" src="https://picsum.photos/id/129/120/120" alt="">
+                        </div>
+                        <div class="karusell-avstand list-item__label">250m</div>
+                        <div class="karusell-bruker-info">
+                            <div class="list-item__title"><b>Bruker 5</b></div>
+                            <div class="list-item__subtitle">Lorem ipsum, dolor sit amet consectetur.</div>
+                            <div class="left">
+                                <ons-icon icon="fa-envelope" class="list-item__icon ikoner meldingIkon"></ons-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="karusell-bruker kbruker-6">
+                        <div>
+                            <img class="karusell-bruker-bilde" src="https://picsum.photos/id/177/120/120" alt="">
+                        </div>
+                        <div class="karusell-avstand list-item__label">250m</div>
+                        <div class="karusell-bruker-info">
+                            <div class="list-item__title"><b>Bruker 6</b></div>
+                            <div class="list-item__subtitle">Lorem ipsum, dolor sit amet consectetur.</div>
+                            <div class="left">
+                                <ons-icon icon="fa-envelope" class="list-item__icon ikoner meldingIkon"></ons-icon>
+                            </div>
+                        </div>
+                    </div>
+                </ons-carousel-item>
+            </ons-carousel>
+
+
+        </ons-page>
+    </template>
+
+    <!--ANNEN BRUKER PROFIL-->
+    <template id="annenBruker.html">
+        <ons-page id="bruker2">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Tilbake</ons-back-button>
+                </div>
+                <div class="center"></div>
+            </ons-toolbar>
+
+            <div id="profilTop">
+
+
+
+                <p class="w3-center"><img src="https://picsum.photos/id/1027/106/106" class="w3-circle profilBilde"
+                        alt="Avatar">
+                    <h4 class="w3-center">Lorem Ipsum <ons-icon icon="fa-envelope"
+                            class="list-item__icon ikoner meldingIkon"></ons-icon>
+                    </h4>
+            </div>
+
+            <div id="opplysninger">
+                <ons-card>
+                    <ul class="liste">
+                        <li><b>Sted:</b> Oslo</li>
+                        <li><b>Permisjonstid:</b> 07.06 - 07.12</li>
+                        <li><b>Barnets alder:</b> 3 måneder</li>
+                    </ul>
+                </ons-card>
+            </div>
+            <div>
+                <ons-card>
+
+                    <h5>Bilder</h5>
+                    <div id="gallery">
+                        <div id="largePreview"> <img src="http://placehold.it/200x100" /></div>
+                        <div class="smallPreview">
+                            <div><img src="http://placehold.it/140x48" /></div>
+                            <div><img src="http://placehold.it/140x48" /></div>
+
+                        </div>
+                    </div>
+
+
+                </ons-card>
+            </div>
+
+            <div>
+                <ons-card>
+                    <h5>Introduksjonstekst</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br><br>
+                        Morbi semper sem vitae posuere posuere. Mauris ultricies vehicula orci, et venenatis tellus
+                        finibus eu.<br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </ons-card>
+            </div>
+        </ons-page>
+    </template>
+
+    <!-- AKTIVITETER -->
+    <template id="aktiviteter.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Aktiviteter</div>
+            </ons-toolbar>
+            <div class="tittel">
+                <h3>Mine aktiviteter</h3>
+            </div>
+            <ons-fab position="bottom right">
+                <ons-icon icon="md-plus" onclick="nyAktivitetPush()"></ons-icon>
+            </ons-fab>
+            <ons-card class="post">
+                <div class="aktivitet-container">
+                    <div class="aktivitet-bilde abilde-1"></div>
+                    <div class="aktivitet-info">
+                        <ons-list>
+                            <ons-list-header class="liste-bakgrunn"><b>Kaffebesøk</b></ons-list-header>
+
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </div>
+                <div class="aktivitet-container">
+                    <div class="aktivitet-bilde abilde-2"></div>
+                    <div class="aktivitet-info">
+                        <ons-list>
+                            <ons-list-header class="liste-bakgrunn"><b>Kaffebesøk</b></ons-list-header>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </div>
+                <div class="aktivitet-container">
+                    <div class="aktivitet-bilde abilde-3"></div>
+                    <div class="aktivitet-info">
+                        <ons-list>
+                            <ons-list-header class="liste-bakgrunn"><b>Kaffebesøk</b></ons-list-header>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </div>
+            </ons-card>
+            <div class="tittel">
+                <h3>Aktiviteter i nærheten</h3>
+            </div>
+
+            <ons-card class="post">
+                <div class="aktivitet-container">
+                    <div class="aktivitet-bilde abilde-1"></div>
+                    <div class="aktivitet-info">
+                        <ons-list>
+                            <ons-list-header class="liste-bakgrunn"><b>Kaffebesøk</b></ons-list-header>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </div>
+                <div class="aktivitet-container">
+                    <div class="aktivitet-bilde abilde-2"></div>
+                    <div class="aktivitet-info">
+                        <ons-list>
+                            <ons-list-header class="liste-bakgrunn"><b>Kaffebesøk</b></ons-list-header>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </div>
+                <div class="aktivitet-container">
+                    <div class="aktivitet-bilde abilde-3"></div>
+                    <div class="aktivitet-info">
+                        <ons-list>
+                            <ons-list-header class="liste-bakgrunn"><b>Kaffebesøk</b></ons-list-header>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </div>
+            </ons-card>
+        </ons-page>
+    </template>
+
+    <!-- NY AKTIVITET -->
+    <template id="nyAktivitet.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Tilbake</ons-back-button>
+                </div>
+                <div class="center"></div>
+                <div class="right">
+                    <ons-toolbar-button>Opprett</ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <div id="ny-aktivitet-container">
+                <div class="ny-aktivitet-bilde">
+                    <button type="button" class="legg-til-bilde button button--light">
+                        <ons-icon icon="fa-images" class="ikoner"></ons-icon>Legg til bilde</button>
+                </div>
+
+                <div class="ny-aktivitet-detaljer">
+                   
+                    <ons-list modifier="noborder">
+                        <ons-list-item class="input-items">
+                            
+                            <label class="center">
+                            <ons-input id="detaljer-input" float maxlength="20" placeholder="Navn på ny aktivitet"></ons-input>
+                          </label>
+                          </ons-list-item>
+                        <ons-list-item class="input-items">
+                            <div class="left">
+                              <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                            </div>
+                            <label class="center">
+                            <ons-input id="når-input" float maxlength="20" placeholder="Når"></ons-input>
+                          </label>
+                          </ons-list-item>
+                          <ons-list-item class="input-items">
+                            <div class="left">
+                              <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                            </div>
+                            <label class="center">
+                            <ons-input id="sted-input" float maxlength="20" placeholder="Sted"></ons-input>
+                          </label>
+                          </ons-list-item>
+                          <ons-list-item class="input-items">
+                            <div class="left">
+                              <ons-icon icon="fa-pencil-alt" class="list-item__icon ikoner"></ons-icon>
+                            </div>
+                            <label class="center">
+                                <textarea class="textarea textarea--transparent" rows="3" placeholder="Detaljer"></textarea>
+                          </label>
+                          </ons-list-item>
+
+                    </ons-list>
+
+                </div>
+            </div>
+
+
+        </ons-page>
+    </template>
+
+    <!-- EVENTSIDE -->
+    <template id="eventside.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Tilbake</ons-back-button>
+                </div>
+                <div class="center"></div>
+            </ons-toolbar>
+
+            <ons-card class="event-post">
+                <div>
+                    <h3>Kaffebesøk</h3>
+                </div>
+                <div class="event-bilde"></div>
+                <div class="content event-content">
+
+                    <div class="event-dato-sted">
+                        <ons-list>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-calendar-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Mandag, 20. Mai</span>
+                                </div>
+                            </ons-list-item>
+                            <ons-list-item modifier="nodivider">
+                                <div class="left">
+                                    <ons-icon icon="fa-map-marker-alt" class="list-item__icon ikoner"></ons-icon>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__subtitle">Kafegata 16</span>
+                                </div>
+                            </ons-list-item>
+
+                        </ons-list>
+                    </div>
+
+                    <div class="event-detaljer">
+                        <ons-list>
+                            <ons-list-header>Detaljer</ons-list-header>
+                            <ons-list-item>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptatum
+                                eaque repellendus architecto earum voluptatibus possimus, illo, minus perspiciatis animi
+                                quaerat voluptates sint necessitatibus assumenda eveniet rem odit ipsum omnis.
+                            </ons-list-item>
+
+                        </ons-list>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="event-knapp-div"><button type="button" class="event-knapp">Bli med</button></div>
+
+            </ons-card>
+        </ons-page>
+
+    </template>
+
+    <!-- INSTILLINGER -->
+    <template id="instillinger.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Instillinger</div>
+            </ons-toolbar>
+            <section id="instillinger-container">
+                <ons-list>
+                <ons-list-header class="instillinger-header">Varsler</ons-list-header>
+         
+                <ons-list-item modifier="nodivider">
+                    <div class="center">
+                      Meldinger
+                    </div>
+                    <div class="right">
+                      <ons-switch checked></ons-switch>
+                    </div>
+                  </ons-list-item>
+         
+                  <ons-list-item modifier="nodivider">
+                    <div class="center">
+                      Nye aktiviteter
+                    </div>
+                    <div class="right">
+                      <ons-switch ></ons-switch>
+                    </div>
+                  </ons-list-item>
+        </ons-list>
+        <ons-list>
+          <ons-list-header class="instillinger-header">Juridiske merknader</ons-list-header>
+          <ons-list-item modifier="nodivider">Vilkår for bruk</ons-list-item>
+          <ons-list-item modifier="nodivider">Personvernsretningslinjer</ons-list-item>
+          <ons-list-item modifier="longdivider">Retningslinjer for informasjonskapsler</ons-list-item>
+          <ons-list-item ><button class="button--quiet">Logg ut</button></ons-list-item>
+          
+        </ons-list>
+        
+
+        
+        
+      
+      
+     
+      
+
+        </section>
+    </ons-page>
+    </template>
+
+
+    <script src="Javascript.js"></script>
+</body>
+
+</html>
